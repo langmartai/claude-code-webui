@@ -12,11 +12,21 @@ npm install -g lm-assist
 
 Services start automatically. Open a **new Claude Code session** and type `/web`.
 
-Or install the plugin only:
+### Plugin Marketplace
+
+Add the marketplace once — then install any combination of plugins:
+
 ```
 /plugin marketplace add langmartai/lm-assist
-/plugin install claude-code-webui@langmartai
 ```
+
+| Install command | What you get |
+|----------------|-------------|
+| `/plugin install claude-code-multisession@langmartai` | Skills (observe, route) + commands (`/sessions`, `/summary`, `/run`) — cross-project session management |
+| `/plugin install claude-code-webui@langmartai` | Skill (dashboard) + commands (`/web`, `/web-sessions`, `/web-tasks`) — web dashboard access |
+| `/plugin install lm-assist@langmartai` | Commands (`/assist`, `/assist-setup`, `/assist-status`, `/assist-search`, `/assist-logs`) — setup and diagnostics |
+
+Install all three for the full experience, or pick what you need.
 
 ## Commands
 
