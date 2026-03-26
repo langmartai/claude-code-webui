@@ -75,7 +75,7 @@ Your data stays on your machine — the cloud relay only forwards API requests, 
 
 Browse all sessions across projects. Click any session for 15 specialized views.
 
-<a href="https://langmart.ai/images/assist/session-browser.png"><img src="https://langmart.ai/images/assist/session-browser.png" alt="Session Browser" width="700"></a>
+<a href="https://raw.githubusercontent.com/langmartai/lm-assist/main/docs/screenshots/session-browser.png"><img src="https://raw.githubusercontent.com/langmartai/lm-assist/main/docs/screenshots/session-browser.png" alt="Session Browser" width="700"></a>
 
 ### 15 Insight Tabs
 
@@ -101,14 +101,14 @@ Browse all sessions across projects. Click any session for 15 specialized views.
 
 <table>
   <tr>
-    <td><a href="https://langmart.ai/images/assist/agent-tree.png"><img src="https://langmart.ai/images/assist/agent-tree.png" alt="Agent Tree" width="340"></a><br><sub>Subagent hierarchy</sub></td>
-    <td><a href="https://langmart.ai/images/assist/task-kanban.png"><img src="https://langmart.ai/images/assist/task-kanban.png" alt="Task Kanban" width="340"></a><br><sub>Task kanban board</sub></td>
+    <td><a href="https://raw.githubusercontent.com/langmartai/lm-assist/main/docs/screenshots/agent-tree.png"><img src="https://raw.githubusercontent.com/langmartai/lm-assist/main/docs/screenshots/agent-tree.png" alt="Agent Tree" width="340"></a><br><sub>Subagent hierarchy</sub></td>
+    <td><a href="https://raw.githubusercontent.com/langmartai/lm-assist/main/docs/screenshots/task-kanban.png"><img src="https://raw.githubusercontent.com/langmartai/lm-assist/main/docs/screenshots/task-kanban.png" alt="Task Kanban" width="340"></a><br><sub>Task kanban board</sub></td>
   </tr>
 </table>
 
 ### Web Terminal
 
-<a href="https://langmart.ai/images/assist/session-terminal.png"><img src="https://langmart.ai/images/assist/session-terminal.png" alt="Web Terminal" width="700"></a>
+<a href="https://raw.githubusercontent.com/langmartai/lm-assist/main/docs/screenshots/session-terminal.png"><img src="https://raw.githubusercontent.com/langmartai/lm-assist/main/docs/screenshots/session-terminal.png" alt="Web Terminal" width="700"></a>
 
 Control running Claude Code sessions from any browser.
 
