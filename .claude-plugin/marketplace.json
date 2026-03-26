@@ -1,0 +1,22 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "langmartai",
+  "description": "Claude Code Web UI — web dashboard for session browsing, agent debugging, and terminal control",
+  "owner": {
+    "name": "langmartai"
+  },
+  "metadata": {
+    "description": "Plugins by langmartai",
+    "homepage": "https://github.com/langmartai/claude-code-webui"
+  },
+  "plugins": [
+    {
+      "name": "claude-code-webui",
+      "version": "0.1.0",
+      "source": "./",
+      "description": "Web dashboard for Claude Code. Browse sessions with 15 insight views, debug subagent trees, control terminals from any browser. Powered by lm-assist.",
+      "category": "productivity",
+      "homepage": "https://github.com/langmartai/claude-code-webui"
+    }
+  ]
+}

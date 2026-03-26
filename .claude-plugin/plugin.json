@@ -1,0 +1,10 @@
+{
+  "name": "claude-code-webui",
+  "version": "0.1.0",
+  "description": "Web dashboard for Claude Code — browse sessions, debug agents, control terminals from any browser",
+  "author": {
+    "name": "langmartai"
+  },
+  "repository": "https://github.com/langmartai/claude-code-webui",
+  "license": "MIT"
+}

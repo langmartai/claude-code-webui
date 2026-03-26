@@ -1,0 +1,25 @@
+{
+  "name": "claude-code-webui",
+  "version": "0.1.0",
+  "description": "Web dashboard for Claude Code — browse sessions, debug agents, control terminals from any browser",
+  "license": "MIT",
+  "repository": "https://github.com/langmartai/claude-code-webui",
+  "homepage": "https://github.com/langmartai/claude-code-webui",
+  "author": {
+    "name": "langmartai"
+  },
+  "keywords": [
+    "claude-code",
+    "webui",
+    "dashboard",
+    "session-browser",
+    "agent-debugging",
+    "web-terminal"
+  ],
+  "dependencies": {
+    "lm-assist": "latest"
+  },
+  "bin": {
+    "claude-code-webui": "./bin/claude-code-webui.js"
+  }
+}
