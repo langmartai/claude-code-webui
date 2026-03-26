@@ -1,8 +1,8 @@
 # Claude Code WebUI
 
-**Web dashboard for Claude Code — browse sessions, debug agents, control terminals from any browser.**
+**Web dashboard for Claude Code — browse sessions, debug agents, control terminals from any browser, any device.**
 
-15 insight views per session. Responsive on phone, tablet, and desktop. Access from localhost, LAN, or anywhere via cloud relay.
+15 insight views per session. Responsive on phone, tablet, and desktop. Access from localhost, LAN, or anywhere by signing in to [langmart.ai](https://langmart.ai).
 
 ## Install
 
@@ -10,7 +10,7 @@
 npm install -g lm-assist
 ```
 
-Services start automatically. Open a **new Claude Code session** and type `/dashboard`.
+Services start automatically. Open a **new Claude Code session** and type `/web`.
 
 Or install the plugin only:
 ```
@@ -20,49 +20,54 @@ Or install the plugin only:
 
 ## Commands
 
-### `/dashboard` — Open the web dashboard
+| Command | What it does |
+|---------|-------------|
+| `/web` | Open the main web dashboard |
+| `/web-sessions` | Open session browser with 15 insight tabs |
+| `/web-tasks` | Open task kanban board |
+
+### `/web` — Open Dashboard
 
 ```
-> /dashboard
-Claude Code Web Dashboard (v0.1.69)
-═════════════════════════════════════════════
+> /web
+Web Dashboard (v0.1.69)
+════════════════════════════════════════
   Local:  http://localhost:3848
   LAN:    http://192.168.1.100:3848
-  Mobile: http://192.168.1.100:3848 (responsive)
-
-  Sessions: 3 running, 127 total
-  Cost:     $89.10
-
-Pages:
-  /sessions           Session browser + 15 insight tabs
-  /session-dashboard  Multi-terminal live view
-  /knowledge          Knowledge base browser
-  /tasks              Task kanban board
-  /settings           Configuration
+  3 running, 127 total, $89.10
 ```
 
-### `/terminal` — Open web terminal for a session
+### `/web-sessions` — Session Browser
 
 ```
-> /terminal
-Web Terminal
-──────────────────────────────────────────────────
-Running sessions:
-  api-refactor         (my-backend)   abc12345
-  dashboard-redesign   (my-frontend)  def67890
-
-To connect: /terminal abc12345
-
-Terminal dashboard: http://192.168.1.100:3848/session-dashboard
+> /web-sessions
+Session Browser: http://192.168.1.100:3848/sessions
+15 insight tabs per session: Chat, Thinking, Agents, Plans, Team, DAG, Files, Git...
 ```
 
+### `/web-tasks` — Task Board
+
 ```
-> /terminal abc12345
-Starting web terminal for: abc12345
-Terminal ready:
-  Local: http://localhost:5901
-  LAN:   http://192.168.1.100:5901
+> /web-tasks
+Task Board: http://192.168.1.100:3848/tasks
+  Pending: 5  In Progress: 2  Done: 12
 ```
+
+## Access From Anywhere
+
+### Local (same machine)
+`http://localhost:3848` — no auth needed.
+
+### LAN (same network)
+`http://<your-ip>:3848` — access from phone, tablet, or another computer on your WiFi.
+
+### Cloud (any device, anywhere)
+Sign in to [langmart.ai](https://langmart.ai) and connect your machine:
+1. Get an API key at [langmart.ai/assist](https://assist.langmart.ai/assist)
+2. Run `lm-assist setup --key YOUR_API_KEY`
+3. Access your dashboard at [assist.langmart.ai/assist-dashboard](https://assist.langmart.ai/assist-dashboard)
+
+Your data stays on your machine — the cloud relay only forwards API requests, never stores session data.
 
 ## What You See
 
@@ -73,8 +78,6 @@ Browse all sessions across projects. Click any session for 15 specialized views.
 <a href="https://langmart.ai/images/assist/session-browser.png"><img src="https://langmart.ai/images/assist/session-browser.png" alt="Session Browser" width="700"></a>
 
 ### 15 Insight Tabs
-
-Every session gets a full breakdown:
 
 | Tab | What You See |
 |-----|-------------|
@@ -88,48 +91,34 @@ Every session gets a full breakdown:
 | **Team** | Multi-agent team coordination |
 | **Files** | All files read, written, edited |
 | **Git** | Commits, pushes, diffs |
-| **Console** | Terminal output and process management |
+| **Console** | Terminal output |
 | **Summary** | LLM-generated session summary |
 | **Meta** | Metadata — slug, cost, tokens, model |
 | **JSON** | Raw session JSONL data |
 | **DB** | Internal cache and index |
 
-### Agent Tree
+### Agent Tree & Task Kanban
 
-<a href="https://langmart.ai/images/assist/agent-tree.png"><img src="https://langmart.ai/images/assist/agent-tree.png" alt="Agent Tree" width="500"></a>
+<table>
+  <tr>
+    <td><a href="https://langmart.ai/images/assist/agent-tree.png"><img src="https://langmart.ai/images/assist/agent-tree.png" alt="Agent Tree" width="340"></a><br><sub>Subagent hierarchy</sub></td>
+    <td><a href="https://langmart.ai/images/assist/task-kanban.png"><img src="https://langmart.ai/images/assist/task-kanban.png" alt="Task Kanban" width="340"></a><br><sub>Task kanban board</sub></td>
+  </tr>
+</table>
 
 ### Web Terminal
 
 <a href="https://langmart.ai/images/assist/session-terminal.png"><img src="https://langmart.ai/images/assist/session-terminal.png" alt="Web Terminal" width="700"></a>
 
-Control running Claude Code sessions from any browser — phone, tablet, or desktop.
-
-### Task Kanban
-
-<a href="https://langmart.ai/images/assist/task-kanban.png"><img src="https://langmart.ai/images/assist/task-kanban.png" alt="Task Kanban" width="500"></a>
+Control running Claude Code sessions from any browser.
 
 ### Mobile & Tablet
 
-The dashboard is fully responsive. Monitor sessions and control terminals from your phone.
-
-## Access Modes
-
-| Mode | URL | Auth |
-|------|-----|------|
-| **Local** | `http://localhost:3848` | None |
-| **LAN** | `http://<your-ip>:3848` | Optional token |
-| **Cloud** | Via LangMart Hub | API key |
-
-## Architecture
-
-Powered by [lm-assist](https://github.com/langmartai/lm-assist):
-- **Core API** (port 3100) — 155+ REST endpoints for session data
-- **Web UI** (port 3848) — Next.js 16 + React 19 dashboard
-- **Web Terminals** (port 5900+) — ttyd per active session
+Fully responsive — monitor sessions and manage tasks from your phone.
 
 ## Related
 
-- [claude-code-multisession](https://github.com/langmartai/claude-code-multisession) — Skills for cross-project session management
+- [claude-code-multisession](https://github.com/langmartai/claude-code-multisession) — Skills for cross-project session routing and management
 - [lm-assist](https://github.com/langmartai/lm-assist) — The observability platform powering everything
 
 ## License

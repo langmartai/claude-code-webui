@@ -1,5 +1,5 @@
 ---
-description: "Use when the user asks to open the web dashboard, view sessions in browser, access web terminal, check the dashboard URL, or wants to see session details visually. Handles web UI access, terminal streaming, and browser-based session management."
+description: "Use when the user asks to open the web dashboard, view sessions in browser, check the dashboard URL, or wants to see session details visually. Handles web UI access and browser-based session management."
 allowed-tools: Bash
 ---
 
