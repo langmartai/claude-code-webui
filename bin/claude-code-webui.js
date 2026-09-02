@@ -12,5 +12,8 @@ if (args.length === 0) args.push('start');
 try {
   execFileSync('lm-assist', args, { stdio: 'inherit' });
 } catch (e) {
+  if (e.code === 'ENOENT') {
+    console.error('lm-assist is not installed. Run: npm install -g lm-assist');
+  }
   process.exit(e.status || 1);
 }

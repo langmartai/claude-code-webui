@@ -1,6 +1,6 @@
 {
   "name": "claude-code-webui",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Web dashboard for Claude Code — browse sessions, debug agents, control terminals from any browser",
   "author": {
     "name": "langmartai"

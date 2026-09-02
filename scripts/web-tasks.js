@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const { api, checkHealth, fmt } = require('./api');
+const { api, checkHealth, WEB_PORT } = require('./api');
 const { execFileSync } = require('child_process');
 const os = require('os');
 
@@ -12,8 +12,8 @@ const os = require('os');
     for (const i of n)
       if (i.family === 'IPv4' && !i.internal) { ip = i.address; break; }
 
-  const url = 'http://localhost:3848/tasks';
-  console.log(`Task Board: http://${ip}:3848/tasks`);
+  const url = `http://localhost:${WEB_PORT}/tasks`;
+  console.log(`Task Board: http://${ip}:${WEB_PORT}/tasks`);
 
   const data = await api('/task-store/tasks');
   if (data?.data?.tasks) {

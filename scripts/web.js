@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const { api, checkHealth, fmt } = require('./api');
+const { api, checkHealth, fmt, WEB_PORT } = require('./api');
 const { execFileSync } = require('child_process');
 const os = require('os');
 
@@ -22,10 +22,33 @@ const os = require('os');
 
   console.log(`Web Dashboard (v${v})`);
   console.log(fmt.dline(40));
-  console.log(`  Local:  http://localhost:3848`);
-  console.log(`  LAN:    http://${ip}:3848`);
+  console.log(`  Local:  http://localhost:${WEB_PORT}`);
+  console.log(`  LAN:    http://${ip}:${WEB_PORT}`);
   console.log(`  ${running} running, ${total} total, ${fmt.cost(cost)}`);
 
-  try { execFileSync('open', ['http://localhost:3848'], { stdio: 'pipe' }); }
-  catch { try { execFileSync('xdg-open', ['http://localhost:3848'], { stdio: 'pipe' }); } catch {} }
+  // Claude Code rate-limit windows (proxied from api.anthropic.com via the
+  // node's OAuth token): the 5-hour session window and the weekly window.
+  const usage = await api('/claude-code/usage');
+  if (usage?.success && usage.data) {
+    const u = usage.data;
+    const pick = (kind) => (u.limits || []).find(l => l.kind === kind)?.percent;
+    const fiveH = u.five_hour?.utilization ?? pick('session');
+    const week = u.seven_day?.utilization ?? pick('weekly_all');
+    if (fiveH != null || week != null)
+      console.log(`  Usage: 5h ${fiveH ?? '?'}% · 7d ${week ?? '?'}%`);
+  }
+
+  // Auto-resume monitor: sessions stalled on server/network errors are nudged
+  // back to life; a model usage limit triggers a verified /model fallback.
+  const stalls = await api('/monitor/stalls');
+  if (stalls?.data?.enabled && stalls.data.sessions?.length) {
+    const gaveUp = stalls.data.gaveUp || 0;
+    console.log(`  Auto-resume: ${stalls.data.sessions.length} stalled session(s) tracked${gaveUp ? `, ${gaveUp} gave up` : ''}`);
+  }
+
+  console.log('  Pages: sessions, tasks, projects, missions, search, memory, backlog,');
+  console.log('         scheduler, ccr, data, clusters, knowledge, skills...');
+
+  try { execFileSync('open', [`http://localhost:${WEB_PORT}`], { stdio: 'pipe' }); }
+  catch { try { execFileSync('xdg-open', [`http://localhost:${WEB_PORT}`], { stdio: 'pipe' }); } catch {} }
 })();
